@@ -1,7 +1,9 @@
 export default Object.freeze({
   LOGIN: "SignIn",
   REGISTER: "SignUp",
-  HOME: "الرئيسية",
-  MANAGEMENT: "الإعادات",
-  STATS: "الإحصاء",
+  HOME: "Home",
+  ALL_EVENTS: "Events",
+  CATEGORY: "Category",
+  PROFILE: "Profile",
+  MY_EVENTS : "My Events"
 });

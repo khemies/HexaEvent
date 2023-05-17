@@ -13,12 +13,14 @@ function MyTabBar({ state, descriptors, navigation }) {
       return (
         <Ionicons name="md-home-outline" size={size} color={colors.primary} />
       );
-    else if (label == routes.MANAGEMENT)
-      return <AntDesign size={size} name="setting" color={colors.primary} />;
+    else if (label == routes.PROFILE)
+      return <AntDesign size={size} name="user" color={colors.primary} />;
+        else if (label == routes.CATEGORY)
+      return <Ionicons name="menu" size={size} color={colors.primary} />;
     else
       return (
         <Ionicons
-          name="stats-chart-outline"
+          name="list"
           size={size}
           color={colors.primary}
         />

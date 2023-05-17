@@ -3,10 +3,14 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import routes from "./routes";
 import HomeScreen from "../screens/HomeScreen";
-import ManagementScreen from "../screens/ManagementScreen";
-import StatsScreen from "../screens/StatsScreen";
+import ManagementScreen from "../screens/AllEventsScreen";
+import StatsScreen from "../screens/ProfileScreen";
 import MyTabBar from "../components/CustomTab";
 import Header from "../components/Header";
+import AllEventsScreen from "../screens/AllEventsScreen";
+import ProfileScreen from "../screens/ProfileScreen";
+import MyEventsScreen from "../screens/MyEventsScreen";
+import CategoryScreen from "../screens/CategoryScreen";
 
 const AppNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -20,18 +24,25 @@ const AppNavigator = () => {
         }}
       />
       <Tab.Screen
-        name={routes.MANAGEMENT}
+        name={routes.CATEGORY}
         options={{
           header: Header,
         }}
-        component={ManagementScreen}
+        component={CategoryScreen}
       />
       <Tab.Screen
-        name={routes.STATS}
+        name={routes.PROFILE}
         options={{
           header: Header,
         }}
-        component={StatsScreen}
+        component={ProfileScreen}
+      />
+      <Tab.Screen
+        name={routes.MY_EVENTS}
+        options={{
+          header: Header,
+        }}
+        component={MyEventsScreen}
       />
     </Tab.Navigator>
   );

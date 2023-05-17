@@ -17,6 +17,8 @@ import { authenticate } from "../controller/userApi";
 import storage from "../Auth/storage";
 import AuthContext from "../context/AuthContext";
 import useAuth from "../Auth/useAuth";
+import LinkText from "../components/LinkText";
+import routes from "../navigation/routes";
 
 const validationSchema = Yup.object({
   username: Yup.string().required().label("Username"),
@@ -28,11 +30,14 @@ const initValues = {
   password: "",
 };
 
-const LoginScreen = ({}) => {
+const LoginScreen = (props) => {
   const [loginFailed, setLoginFailed] = useState(false);
   const { user, setUser } = useContext(AuthContext);
   const { logIn } = useAuth();
+
+  const navigate = props.navigation.navigate
   const handleSubmit = (values) => {
+    console.log(values);
     storage
       .removeToken()
       .then((res) => {
@@ -104,6 +109,7 @@ const LoginScreen = ({}) => {
             />
           </CustomView>
           <SubmitButton title="Sign In" style={{ alignSelf: "center" }} />
+          <LinkText onPress={() => navigate(routes.REGISTER)} > you don't have an account yet ? register now !</LinkText>
           <ErrorMessage
             error={"incorrect information"}
             visible={loginFailed}
@@ -111,7 +117,6 @@ const LoginScreen = ({}) => {
           />
         </CustomView>
       </AppForm>
-
     </CustomView>
   );
 };

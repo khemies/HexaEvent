@@ -1,5 +1,5 @@
 export default {
-  primary: "#7bc043",
+  primary: "#934DBE",
   secondary: "#4ecdc4",
   black: "#000",
   white: "#fff",
@@ -8,7 +8,7 @@ export default {
   dark: "#0c0c0c",
   danger: "#ff5252",
   greySelection: "#E9E9E5",
-  yellowFlash: "#FFD700",
+  yellowFlash: "#FFDB5C",
   grey: "#333e49",
   greyPlaceholder: "#c5c5c5",
   purple: "#6C63FF",
@@ -18,4 +18,5 @@ export default {
   lightred: "#FF7F7F",
   lightgreen: "#7FFFBF",
   lightblue: "#7FBFFF",
+  blueLink : "#1C58F2",
 };

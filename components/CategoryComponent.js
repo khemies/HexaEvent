@@ -1,12 +1,27 @@
 import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React , {useState} from 'react'
 import AppText from './AppText'
 import { adaptToHeight, adaptToWidth } from '../config/dimensions'
 import colors from '../config/colors'
+import routes from '../navigation/routes'
+import { getEvents } from '../controller/eventsApi'
 
-export default function CategoryComponent({category , index , onPress}) {
+
+
+export default function CategoryComponent({category , index ,  navigate}) {
+
+  
+
+  const handleOnPress = () => {
+    getEvents()
+      .then((res) => {
+     
+        navigate(routes.ALL_EVENTS, { data: [...res?.data.results.filter( el => el?.category?.id == category?.id)] });
+      })
+      .catch((e) => console.log(e));
+  }
   return (
-    <TouchableOpacity  onPress={onPress} >
+    <TouchableOpacity  onPress={handleOnPress} >
       <ImageBackground
         key={index}
         source={{ uri: category?.image }}
@@ -30,7 +45,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
   title: {
-    fontSize: 12,
+    fontSize: 18,
     fontWeight: "bold",
     color: colors.light,
   },

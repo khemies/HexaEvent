@@ -13,19 +13,20 @@ const Header = (props) => {
   return (
     <CustomView
       style={{
-        backgroundColor: colors.primary,
+        backgroundColor: colors.white,
         width: "100%",
         height: adaptToHeight(0.12),
-
+        color: colors.primary,
         alignItems: "flex-end",
         justifyContent: "center",
       }}
     >
       <CustomView
         style={{
-          backgroundColor: colors.primary,
+          backgroundColor: colors.white,
           width: "60%",
           height: adaptToHeight(0.08),
+          color: colors.primary,
           flexDirection: "row",
           alignItems: "flex-start",
           justifyContent: "center",
@@ -38,7 +39,7 @@ const Header = (props) => {
           style={{
             marginTop: adaptToHeight(0.025),
             fontSize: adaptToHeight(0.025),
-            color: colors.white,
+            color: colors.primary,
             fontWeight: "bold",
             fontFamily: "NeoSansArabic",
           }}

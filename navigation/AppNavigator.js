@@ -12,6 +12,7 @@ import ProfileScreen from "../screens/ProfileScreen";
 import MyEventsScreen from "../screens/MyEventsScreen";
 import CategoryScreen from "../screens/CategoryScreen";
 import useAuth from "../Auth/useAuth";
+import CategoryNavigation from "./CategoryNavigation";
 
 const AppNavigator = () => {
   const { logOut } = useAuth();
@@ -30,7 +31,7 @@ const AppNavigator = () => {
         options={{
           header: (props) => <Header {...props} logout={logOut} />,
         }}
-        component={CategoryScreen}
+        component={CategoryNavigation}
       />
       <Tab.Screen
         name={routes.PROFILE}
@@ -46,7 +47,6 @@ const AppNavigator = () => {
         }}
         component={MyEventsScreen}
       />
- 
     </Tab.Navigator>
   );
 };

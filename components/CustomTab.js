@@ -27,7 +27,9 @@ function MyTabBar({ state, descriptors, navigation }) {
       );
   };
   return (
-    <CustomView style={{ flexDirection: "row" }}>
+    <CustomView style={{ flexDirection: "row" , backgroundColor : colors.yellowFlash , height : adaptToHeight(0.1)
+    , alignItems : "center"
+    }}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =

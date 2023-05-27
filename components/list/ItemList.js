@@ -8,7 +8,6 @@ import AppText from "../AppText";
 
 
 const ItemList = ({ item }) => {
-  console.log(item?.event_actual_date);
   const date = new Date(item?.event_actual_date);
   const month =  date.toLocaleString('default', { month: 'long' });
   const day = date.getDate();

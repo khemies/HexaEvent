@@ -86,10 +86,10 @@ const LoginScreen = (props) => {
             backgroundColor: "white",
             width: "90%",
             alignSelf: "center",
-
-            height: "80%",
-            paddingTop: 20,
+            height:"80%",
+            paddingTop:20,
           }}
+        
         >
           <AppText style={styles.title}>Welcome</AppText>
           <CustomView style={{ backgroundColor: "white", width: "90%" }}>

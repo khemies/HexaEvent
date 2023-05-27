@@ -9,9 +9,8 @@ import MyTabBar from "../components/CustomTab";
 import Header from "../components/Header";
 import AllEventsScreen from "../screens/AllEventsScreen";
 import ProfileScreen from "../screens/ProfileScreen";
-import MyEventsScreen from "../screens/MyEventsScreen";
 import CategoryScreen from "../screens/CategoryScreen";
-
+import MyEventsScreen from "../screens/MyEventsScreen";
 const AppNavigator = () => {
   const Tab = createBottomTabNavigator();
   return (

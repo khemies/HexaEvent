@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "najran",
-    "slug": "najran",
+    "name": "HexaEvent",
+    "slug": "HexaEvent",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/hexagone.jpg",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/hexagone.jpg",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#934DBE"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -19,7 +19,13 @@
     "ios": {
       "supportsTablet": true
     },
+    
     "android": {
+
+   "imagepermissions": {
+      "permissions": ["CAMERA_ROLL"]
+    },
+
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

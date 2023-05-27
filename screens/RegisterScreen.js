@@ -38,7 +38,7 @@ register(values).then(res => {
 
     navigate(routes.LOGIN)
   }else{
-    
+    alert("Motdepasse ou nom utilisateur invalide");
   }
 })
 }
@@ -75,6 +75,7 @@ register(values).then(res => {
             placeholder="phone"
           />
           <AppFormField
+           
             autoCapitalize="none"
             autoCorrect={false}
             icon="lock"
@@ -88,7 +89,7 @@ register(values).then(res => {
             onPress={() => navigate(routes.LOGIN)}
             textStyle={styles.textlink}
           >
-            you don't have an account yet ? register now !
+            you have an account? LOGIN now !
           </LinkText>
         </CustomView>
       </AppForm>

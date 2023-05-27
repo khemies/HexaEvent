@@ -4,6 +4,6 @@ export default Object.freeze({
   HOME: "Home",
   ALL_EVENTS: "Events",
   CATEGORY: "Category",
-  PROFILE: "Profile",
+  PROFILE: "AddProfile",
   MY_EVENTS : "My Events"
 });

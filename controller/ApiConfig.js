@@ -2,7 +2,6 @@ import { create } from "apisauce";
 import StorageToken from "../Auth/storage";
 
 const api = create({
-  baseURL: "http://51.120.2.164:8002/",
 });
 
 api.addAsyncRequestTransform(async (request) => {

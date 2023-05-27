@@ -8,7 +8,7 @@ import {
   SubmitButton,
 } from "../components/form";
 import { adaptToWidth, adaptToHeight } from "../config/dimensions";
-import LoginSVG from "../assets/LoginGreenLight.svg";
+import LoginSVG from "../assets/lOGINrEGISTER.svg";
 import Vector from "../assets/VectorGreenLight.svg";
 import AppText from "../components/AppText";
 import colors from "../config/colors";
@@ -21,8 +21,8 @@ import LinkText from "../components/LinkText";
 import routes from "../navigation/routes";
 
 const validationSchema = Yup.object({
-  username: Yup.string().required().label("Username"),
-  password: Yup.string().required().min(4).label("Password"),
+  username: Yup.string(),
+  password: Yup.string(),
 });
 
 const initValues = {
@@ -37,7 +37,6 @@ const LoginScreen = (props) => {
 
   const navigate = props.navigation.navigate
   const handleSubmit = (values) => {
-    console.log(values);
     storage
       .removeToken()
       .then((res) => {
@@ -71,6 +70,7 @@ const LoginScreen = (props) => {
         alignItems: "center",
         justifyContent: "center",
         paddingBottom: adaptToHeight(0.06),
+        backgroundColor: colors.yellowFlash,
       }}
     >
       <CustomView style={{ alignSelf: "center" }}>
@@ -83,16 +83,17 @@ const LoginScreen = (props) => {
       >
         <CustomView
           style={{
-            backgroundColor: "white",
+            backgroundColor: colors.yellowFlash,
             width: "90%",
             alignSelf: "center",
-
+            alignItems : "center",
             height: "80%",
             paddingTop: 20,
           }}
         >
-          <AppText style={styles.title}>Welcome</AppText>
-          <CustomView style={{ backgroundColor: "white", width: "90%" }}>
+          <CustomView
+            style={{ backgroundColor: colors.yellowFlash, width: "90%" , alignItems : "center"}}
+          >
             <AppFormField
               autoCapitalize="none"
               autoCorrect={false}
@@ -109,7 +110,10 @@ const LoginScreen = (props) => {
             />
           </CustomView>
           <SubmitButton title="Sign In" style={{ alignSelf: "center" }} />
-          <LinkText onPress={() => navigate(routes.REGISTER)} > you don't have an account yet ? register now !</LinkText>
+          <LinkText  textStyle={{color : colors.blueLink}} onPress={() => navigate(routes.REGISTER)}>
+            {" "}
+            you don't have an account yet ? register now !
+          </LinkText>
           <ErrorMessage
             error={"incorrect information"}
             visible={loginFailed}

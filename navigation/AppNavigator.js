@@ -11,8 +11,10 @@ import AllEventsScreen from "../screens/AllEventsScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import MyEventsScreen from "../screens/MyEventsScreen";
 import CategoryScreen from "../screens/CategoryScreen";
+import useAuth from "../Auth/useAuth";
 
 const AppNavigator = () => {
+  const { logOut } = useAuth();
   const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
@@ -20,34 +22,35 @@ const AppNavigator = () => {
         name={routes.HOME}
         component={HomeScreen}
         options={{
-          header: Header,
+          header: (props) => <Header {...props} logout={logOut} />,
         }}
       />
       <Tab.Screen
         name={routes.CATEGORY}
         options={{
-          header: Header,
+          header: (props) => <Header {...props} logout={logOut} />,
         }}
         component={CategoryScreen}
       />
       <Tab.Screen
         name={routes.PROFILE}
         options={{
-          header: Header,
+          header: (props) => <Header {...props} logout={logOut} />,
         }}
         component={ProfileScreen}
       />
       <Tab.Screen
         name={routes.MY_EVENTS}
         options={{
-          header: Header,
+          header: (props) => <Header {...props} logout={logOut} />,
         }}
         component={MyEventsScreen}
       />
+ 
     </Tab.Navigator>
   );
 };
 
 export default AppNavigator;
 
-const styles = StyleSheet.create({});
+

@@ -6,9 +6,9 @@ const keyRefresh = "refreshToken"
 
 const storeToken = async (authToken, refreshToken) => {
   try {
-    console.log(authToken , refreshToken)
+ 
     await SecureStore.setItemAsync(key, authToken);
-    return  SecureStore.setItemAsync(keyRefresh, refreshToken);
+    await SecureStore.setItemAsync(keyRefresh, refreshToken);
   } catch (error) {
     console.log("Error storing the auth token", error);
   }
@@ -31,7 +31,7 @@ const getRefreshToken = async () => {
 }
 
 const removeToken = async () => {
-  console.log("removeToken")
+
  SecureStore.deleteItemAsync(key).then( res => {console.log("success removed" , key)
 
 return SecureStore.deleteItemAsync(keyRefresh)

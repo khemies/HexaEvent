@@ -1,18 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useContext, useState } from "react";
-import Screen from "./screen";
 import CustomView from "./CustomView";
 import colors from "../config/colors";
 import { adaptToHeight } from "../config/dimensions";
 import AppText from "./AppText";
 import { AntDesign } from "@expo/vector-icons";
-import AuthContext from "../context/AuthContext";
-import storage from "../Auth/storage";
 import useAuth from "../Auth/useAuth";
 
 const Header = (props) => {
-  const { user, setUser } = useContext(AuthContext);
-  const  {  logOut } = useAuth();
+
+
   return (
     <CustomView
       style={{
@@ -53,9 +50,7 @@ const Header = (props) => {
           size={adaptToHeight(0.025)}
           style={{ margin: adaptToHeight(0.02) }}
           color={colors.white}
-          onPress={ async res => {
-            console.log("logout pressed")
-            logOut()}}
+          onPress={() => props?.logout()}
         />
       </CustomView>
     </CustomView>

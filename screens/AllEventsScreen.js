@@ -80,6 +80,7 @@ export default function AllEventsScreen({data = [] , route,...otherProps}) {
         }
         keyExtractor={({ item, index }) => index}
         renderItem={({ item ,index}) => {
+          console.log(item,index)
           return <ItemList item={item} key={index}/>;
         }}
       />

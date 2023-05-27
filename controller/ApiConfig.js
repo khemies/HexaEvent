@@ -13,8 +13,8 @@ api.addAsyncRequestTransform(async (request) => {
   request.headers["Access-Control-Allow-Origin"] = "*";
   request.headers["Connection"] = "close";
 
-    const authToken = await StorageToken.getToken();
-    if (!authToken) return;
-    request.headers["Authorization"] = "JWT " + authToken;
+  const authToken = await StorageToken.getToken();
+  if (!authToken) return;
+  request.headers["Authorization"] = "JWT " + authToken;
 });
 export default api;

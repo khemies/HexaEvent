@@ -9,10 +9,11 @@ import MyTabBar from "../components/CustomTab";
 import Header from "../components/Header";
 import AllEventsScreen from "../screens/AllEventsScreen";
 import ProfileScreen from "../screens/ProfileScreen";
-import MyEventsScreen from "../screens/MyEventsScreen";
 import CategoryScreen from "../screens/CategoryScreen";
 import useAuth from "../Auth/useAuth";
+import MyEventsScreen from "../screens/MyEventsScreen";
 import CategoryNavigation from "./CategoryNavigation";
+
 
 const AppNavigator = () => {
   const { logOut } = useAuth();

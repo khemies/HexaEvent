@@ -8,9 +8,16 @@ import AppText from "../AppText";
 
 
 const ItemList = ({ item }) => {
+  const options = {
+    weekday: "long",
+    
+  };
   const date = new Date(item?.event_actual_date);
-  const month =  date.toLocaleString('default', { month: 'long' });
+  console.log(date , typeof(date))
+  const month = date.toLocaleString("en-US", { month: "numeric" });
   const day = date.getDate();
+  console.log(month, day)
+  console.log(date.toLocaleString(undefined, options));
 
   return (
     <TouchableOpacity onPress={() => console.log("first")}>

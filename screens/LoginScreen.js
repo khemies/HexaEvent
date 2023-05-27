@@ -37,12 +37,15 @@ const LoginScreen = (props) => {
 
   const navigate = props.navigation.navigate
   const handleSubmit = (values) => {
+    console.log(values);
     storage
+
       .removeToken()
       .then((res) => {
         authenticate(values)
+
           .then((res) => {
-           
+            console.log(res);
             if (res.ok) {
                console.log(
                  res.data.access,
@@ -90,6 +93,7 @@ const LoginScreen = (props) => {
             height: "80%",
             paddingTop: 20,
           }}
+        
         >
           <CustomView
             style={{ backgroundColor: colors.yellowFlash, width: "90%" , alignItems : "center"}}

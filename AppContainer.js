@@ -6,21 +6,31 @@ import AppNavigator from "./navigation/AppNavigator";
 import AuthNavigator from "./navigation/AuthNavigator";
 import { Provider } from "react-redux";
 import store from "./redux/store/store";
-import storage from "./Auth/storage";
 import useAuth from "./Auth/useAuth";
+import LoadingComponent from "./components/Loading"
 
 const AppContainer = () => {
   const { user, setUser } = useContext(AuthContext);
-  const {loading , setLoading} = useState(false)
-  const { persistlogin } = useAuth();
+  const { persistlogin , Loading} = useAuth();
   
  
 
+   useEffect(() => {
+     persistlogin();
+   }, []);
+
+   if(Loading ){
+    console.log(Loading , "loading")
+    return <LoadingComponent/>
+   }else{
   return (
     <NavigationContainer>
       {user ? <AppNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
+   }
+
+
 };
 
 export default AppContainer;

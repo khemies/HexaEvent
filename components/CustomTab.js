@@ -16,7 +16,7 @@ function MyTabBar({ state, descriptors, navigation }) {
     else if (label == routes.PROFILE)
       return <AntDesign size={size} name="user" color={colors.primary} />;
         else if (label == routes.CATEGORY)
-      return <Ionicons name="menu" size={size} color={colors.primary} />;
+      return <Ionicons name="search" size={size} color={colors.primary} />;
     else
       return (
         <Ionicons
@@ -61,6 +61,7 @@ function MyTabBar({ state, descriptors, navigation }) {
 
         return (
           <TouchableOpacity
+          key={index}
             accessibilityRole="button"
             accessibilityState={isFocused ? { selected: true } : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import colors from '../config/colors';
+import AppText from '../components/AppText';
 const CustomComponent = () => {
   return (
     <View style={styles.container}>
@@ -16,7 +17,7 @@ const CustomComponent = () => {
       <Text  style={styles.answertextform}>myemail@mail.com</Text>
 
       <Text style={styles.textform}>Phone </Text>
-      <Text>+3398224763 </Text>
+      <Text style={styles.answertextform}>+3398224763 </Text>
     </View>
   );
 };
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
  textform :{
  fontWeight:"bold",
  fontSize:20,
- marginTop:25,
+ marginTop:20,
  marginLeft:60,
  color:colors.primary,
  },

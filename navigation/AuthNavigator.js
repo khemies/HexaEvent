@@ -9,6 +9,8 @@ import ProfileScreen from "../screens/ProfileScreen";
 const Stack = createStackNavigator();
 
 export default function AuthNavigator() {
+ 
+
   return (
     <Stack.Navigator>
       <Stack.Screen

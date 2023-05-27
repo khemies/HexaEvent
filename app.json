@@ -8,7 +8,7 @@
     "splash": {
       "image": "./assets/hexagone.jpg",
       "resizeMode": "contain",
-      "backgroundColor": "#934DBE"
+      "backgroundColor": "#FFFFFF"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

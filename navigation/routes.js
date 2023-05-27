@@ -3,7 +3,7 @@ export default Object.freeze({
   REGISTER: "SignUp",
   HOME: "Home",
   ALL_EVENTS: "Events",
-  CATEGORY: "Category",
-  PROFILE: "AddProfile",
+  CATEGORY: "Search",
+  PROFILE: "Profile",
   MY_EVENTS : "My Events"
 });

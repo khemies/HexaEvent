@@ -11,7 +11,7 @@ import defaultStyles from "../config/styles";
 import AppText from "./AppText";
 import colors from "../config/colors";
 import { adaptToHeight, adaptToWidth } from "../config/dimensions";
-function AppTextInput({ icon, width = "100%", ...otherProps }) {
+function AppTextInput({ icon, onChange ,width = "100%", ...otherProps }) {
   const [selected, setSelected] = useState(false);
   return (
     <View
@@ -42,7 +42,7 @@ function AppTextInput({ icon, width = "100%", ...otherProps }) {
         style={[defaultStyles.text, styles.text]}
         {...otherProps}
         onTouchStart={() => setSelected(!selected)}
-        onc
+        onChangeText={onChange}
       />
     </View>
   );

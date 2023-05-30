@@ -8,29 +8,25 @@ import AppText from "../AppText";
 
 
 const ItemList = ({ item }) => {
-  const options = {
-    weekday: "long",
-    
-  };
   const date = new Date(item?.event_actual_date);
-  console.log(date , typeof(date))
-  const month = date.toLocaleString("en-US", { month: "numeric" });
+
+  const month = date.toLocaleString("default", { month: "long" });
   const day = date.getDate();
-  console.log(month, day)
-  console.log(date.toLocaleString(undefined, options));
 
   return (
     <TouchableOpacity onPress={() => console.log("first")}>
       <ImageBackground
         source={{
           uri: item?.image,
+          headers: { Accept: "image/*" },
         }}
+        contentFit="cover"
         style={styles.container}
         imageStyle={styles.container}
       >
         <CustomView style={styles.Badge}>
-          <AppText style={styles.dayText} >{day}</AppText>
-           <AppText  style={styles.monthText}>{month}</AppText>
+          <AppText style={styles.dayText}>{day}</AppText>
+          <AppText style={styles.monthText}>{month}</AppText>
         </CustomView>
         <CustomView style={styles.Box}></CustomView>
         <CustomView style={styles.BottomBox}>
@@ -58,6 +54,8 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     justifyContent: "space-around",
     padding: "5%",
+  
+  
   },
   Box: {
     width: "100%",

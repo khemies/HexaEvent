@@ -78,10 +78,13 @@ export default function AllEventsScreen({data = [] , route,...otherProps}) {
             ? route?.params.data
             : data
         }
-        keyExtractor={({ item, index }) => index}
-        renderItem={({ item ,index}) => {
-          console.log(item,index)
-          return <ItemList item={item} key={index}/>;
+        keyExtractor={({ item }) => {
+          const itemId = item?.id;
+          return itemId ? `item_${itemId}` : Math.random().toString(); 
+        }}
+        renderItem={({ item }) => {
+          console.log(item.id, "item.id");
+          return <ItemList item={item} key={item?.id} />;
         }}
       />
     </CustomView>

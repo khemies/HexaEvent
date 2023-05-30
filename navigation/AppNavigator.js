@@ -13,6 +13,7 @@ import CategoryScreen from "../screens/CategoryScreen";
 import useAuth from "../Auth/useAuth";
 import MyEventsScreen from "../screens/MyEventsScreen";
 import CategoryNavigation from "./CategoryNavigation";
+import HomeNavigator from "./HomeNavigator";
 
 
 const AppNavigator = () => {
@@ -22,7 +23,7 @@ const AppNavigator = () => {
     <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
       <Tab.Screen
         name={routes.HOME}
-        component={HomeScreen}
+        component={HomeNavigator}
         options={{
           header: (props) => <Header {...props} logout={logOut} />,
         }}

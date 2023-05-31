@@ -14,7 +14,6 @@ export default function AllEventsScreen({data = [] , route,navigation,...otherPr
   const [searchText , setSearchText] = useState("")
   const [filtredData , setFiltredData] = useState([])
 
-
   useEffect(() => {
     
     if(searchText.length >3){

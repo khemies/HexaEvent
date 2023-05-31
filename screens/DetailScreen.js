@@ -46,7 +46,7 @@ const DetailScreen = (props) => {
  const isAvailable = await SMS.isAvailableAsync();
  if (isAvailable) {
   const { result } = await SMS.sendSMSAsync(
-    ["0123456789", "9876543210"],
+    [`${data?.phone}`],
     "My sample HelloWorld message"
  
   );
@@ -146,13 +146,15 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    justifyContent: "space-around",
+
+
   },
   title: {
     alignItems: "flex-start",
     justifyContent: "flex-start",
     width: "80%",
     padding: adaptToHeight(0.01),
+    marginTop : adaptToHeight(0.05),
   },
 
   titleMovie: { fontSize: 21, fontWeight: "bold" },
@@ -161,8 +163,8 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "flex-start",
     width: "80%",
-    height: adaptToHeight(0.25),
-    marginVertical: adaptToHeight(0.02),
+    marginTop: adaptToHeight(0.05),
+   height : "20%"
   },
   RateNowText: { color: colors.blueLink, fontSize: 10, fontWeight: "bold" },
   RateNowBox: {
@@ -195,23 +197,24 @@ const styles = StyleSheet.create({
     width: "100%",
     borderColor: colors.medium,
     borderStyle: "dotted",
-    padding: "2%",
+    padding: "5%",
   },
   RateBoxText: {},
   image: {
     width: "100%",
-    height: adaptToHeight(0.3),
+  
+   height : adaptToHeight(0.4)
   },
   about: {
-    height: adaptToHeight(0.5),
     width: "80%",
+    marginVertical: adaptToHeight(0.02),
   },
   aboutDescription: { fontSize: 12, lineHeight: 20 },
   aboutTitle: { fontSize: 16, fontWeight: "bold" },
   aboutInfo: { fontSize: 12, color: colors.medium },
   castbox: {
-    marginTop: adaptToHeight(0.05),
-    height: adaptToHeight(0.3),
+    marginVertical: adaptToHeight(0.05),
+
     justifyContent: "flex-start",
     alignItems: "flex-start",
     width: "80%",
@@ -247,7 +250,7 @@ const styles = StyleSheet.create({
   separator: {
     backgroundColor: colors.medium,
   },
-  bookTicket: { height: adaptToHeight(0.07), width: adaptToWidth(1) },
+  bookTicket: { height: adaptToHeight(0.07), width: adaptToWidth(1) , marginBottom : adaptToHeight(0.1)},
   noCast: {
     fontSize: 18,
     color: colors.medium,

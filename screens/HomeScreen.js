@@ -61,7 +61,13 @@ if (events.length > 0 ){
           return itemId ? `item_${itemId}` : Math.random().toString();
         }}
         renderItem={({ item }) => {
-          return <ItemList item={item} key={item?.id} />;
+          return (
+            <ItemList
+              item={item}
+              key={item?.id}
+              onPress={() => navigate(routes.ALL_EVENTS, { params : {data: item }, screen :routes.DETAIL  })}
+            />
+          );
         }}
       />
     </CustomView>

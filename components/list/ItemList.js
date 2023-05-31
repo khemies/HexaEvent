@@ -7,7 +7,7 @@ import AppText from "../AppText";
 
 
 
-const ItemList = ({ item, onPress }) => {
+const ItemList = ({ item, onPress , navigate}) => {
   const date = new Date(item?.event_actual_date);
 
   const month = date.toLocaleString("default", { month: "long" });

@@ -2,35 +2,52 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import colors from '../config/colors';
 import AppText from '../components/AppText';
-const CustomComponent = () => {
+import ProfileItem from '../components/ProfileItem';
+import { adaptToWidth } from '../config/dimensions';
+const CustomComponent = ({profile}) => {
+  console.log(profile)
   return (
     <View style={styles.container}>
-<View>
-<Text style={styles.textform}>Username</Text>
-      <Text style={styles.answertextform}>myusername </Text>
-
-</View>
-      
-      <Text style={styles.textform}> fullname </Text>
-      <Text style={styles.answertextform}> my fullname </Text>
-      <Text style={styles.textform}>email</Text>
-      <Text  style={styles.answertextform}>myemail@mail.com</Text>
-
-      <Text style={styles.textform}>Phone </Text>
-      <Text style={styles.answertextform}>+3398224763 </Text>
+      <ProfileItem
+        icon={"user"}
+        label={"full name"}
+        data={profile?.full_name}
+        iconColor={colors.primary}
+      />
+      <ProfileItem
+        icon={"mail"}
+        label={"mail"}
+        data={profile?.user?.email}
+        iconColor={colors.primary}
+      />
+      <ProfileItem
+        icon={"phone"}
+        label={"phone"}
+        data={profile?.user?.phone}
+        iconColor={colors.primary}
+      />
+      <ProfileItem
+        icon={"user"}
+        label={"username"}
+        data={profile?.user?.username}
+        iconColor={colors.primary}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    width: 250,
-    height: 350,
-    marginTop:20,
-    alignContent:'center',
-    alignSelf: "center",
-    backgroundColor: '#c5c5c5',
-    borderRadius: 20,
+    width: "80%",
+    height: "60%",
+    marginVertical:20,
+   alignItems : "flex-start",
+    justifyContent : "flex-start",
+   backgroundColor : colors.white,
+   padding : adaptToWidth(0.05),
+   borderRadius : adaptToWidth(0.05)
+   
+ 
     
   },
  textform :{

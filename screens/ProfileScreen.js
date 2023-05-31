@@ -30,9 +30,9 @@ const [modalStatus, setModalStatus] = useState(false);
 
 
 
-  <View>
-  <ProfileView/>
-  </View>
+  
+  <ProfileView></ProfileView>
+  
 
   
   <View>

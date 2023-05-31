@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text,style } from 'react-native';
 import colors from '../config/colors';
-import AppText from '../components/AppText';
+
 const CustomComponent = () => {
-  return (
-    <View style={styles.container}>
+<View style={styles.container}>
 <View>
 <Text style={styles.textform}>Username</Text>
       <Text style={styles.answertextform}>myusername </Text>
@@ -15,11 +14,10 @@ const CustomComponent = () => {
       <Text style={styles.answertextform}> my fullname </Text>
       <Text style={styles.textform}>email</Text>
       <Text  style={styles.answertextform}>myemail@mail.com</Text>
-
       <Text style={styles.textform}>Phone </Text>
       <Text style={styles.answertextform}>+3398224763 </Text>
-    </View>
-  );
+</View>
+  
 };
 
 const styles = StyleSheet.create({
@@ -29,8 +27,8 @@ const styles = StyleSheet.create({
     marginTop:20,
     alignContent:'center',
     alignSelf: "center",
-    backgroundColor: '#c5c5c5',
-    borderRadius: 20,
+    backgroundColor: "#c5c5c5",
+    borderRadius: 20
     
   },
  textform :{
@@ -41,12 +39,11 @@ const styles = StyleSheet.create({
  color:colors.primary,
  },
  answertextform :{
-
-  fontSize:15,
+ fontSize:15,
   marginTop:10,
   marginLeft:30,
   color:colors.greySelection,
-  },
+  }
 });
 
 export default CustomComponent;

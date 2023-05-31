@@ -25,7 +25,7 @@ const AppContainer = () => {
    }else{
   return (
     <NavigationContainer>
-      {user ? <AppNavigator /> : <AuthNavigator />}
+     <AppNavigator />
     </NavigationContainer>
   );
    }

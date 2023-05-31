@@ -6,28 +6,40 @@ import AppButton from "../components/AppButton";
 import CustomView from "../components/CustomView";
 import colors from "../config/colors";
 import { adaptToHeight, adaptToWidth } from "../config/dimensions";
+import routes from "../navigation/routes";
 
 
 
-export default function AllEventsScreen({data = [] , routes,...otherProps}) {
+export default function AllEventsScreen({data = [] , route,navigation,...otherProps}) {
   const [searchText , setSearchText] = useState("")
   const [filtredData , setFiltredData] = useState([])
 
-console.log(routes , "routes")
-console.log(otherProps , "otherpops")
 
   useEffect(() => {
     
-    if(searchText){
-      const origData = data.filter(el => el?.title?.includes(searchText))
+    if(searchText.length >3){
+      console.log(searchText)
+      const target_date = route?.params?.data ? route?.params?.data : data;
+      console.log(target_date,"target_date")
+      let origData = target_date.filter((el) =>{
+        console.log(el?.title?.includes(searchText));
+        return el?.title?.includes(searchText)}
+      );
+      console.log(searchText,origData , "origdata")
       setFiltredData(origData)
+      
+    }else {
+      setFiltredData([])
     }
   
   
-  }, [searchText])
+  }, [searchText, filtredData.length])
+
+
+
   
   return (
-    <CustomView  style={{...styles.container}} >
+    <CustomView style={{ ...styles.container }}>
       <CustomView
         style={{
           backgroundColor: colors.light,
@@ -38,8 +50,7 @@ console.log(otherProps , "otherpops")
           justifyContent: "flex-start",
           height: "30%",
           paddingTop: 20,
-          marginBottom : "12%",
-        
+          marginBottom: "12%",
         }}
       >
         <CustomView
@@ -50,20 +61,30 @@ console.log(otherProps , "otherpops")
             marginRight: "10%",
           }}
         >
-          <AppTextInput onChange={(values) =>  setSearchText(values)} />
+          <AppTextInput onChange={(values) => setSearchText(values)} />
         </CustomView>
         <AppButton
-          title="search"
-          style={{ width: adaptToWidth(0.3), height: adaptToHeight(0.06),  }}
+          title="Filter"
+          style={{ width: adaptToWidth(0.3), height: adaptToHeight(0.06) }}
           styleText={{ fontSize: 12 }}
         />
       </CustomView>
 
       <FlatList
-        data={filtredData.length > 0 ? filtredData : data}
-        keyExtractor={({ item, index }) => index}
+        data={
+          filtredData.length > 0
+            ? filtredData
+            : route?.params?.data
+            ? route?.params.data
+            : data
+        }
+        keyExtractor={({ item }) => {
+          const itemId = item?.id;
+          return itemId ? `item_${itemId}` : Math.random().toString(); 
+        }}
         renderItem={({ item }) => {
-          return <ItemList item={item} />;
+          console.log(item.id, "item.id");
+          return <ItemList item={item} key={item?.id} onPress={() => navigation?.navigate(routes.DETAIL,{data : item})}/>;
         }}
       />
     </CustomView>

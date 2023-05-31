@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import routes from "./routes";
 import HomeScreen from "../screens/HomeScreen";
 import ManagementScreen from "../screens/AllEventsScreen";
@@ -12,25 +12,29 @@ import ProfileScreen from "../screens/ProfileScreen";
 import CategoryScreen from "../screens/CategoryScreen";
 import useAuth from "../Auth/useAuth";
 import MyEventsScreen from "../screens/MyEventsScreen";
+import CategoryNavigation from "./CategoryNavigation";
+import HomeNavigator from "./HomeNavigator";
+import LocationContext from "../context/LocationContext";
 
 const AppNavigator = () => {
   const { logOut } = useAuth();
+   const {Position , setPosition} = useContext(LocationContext)
   const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
       <Tab.Screen
-        name={routes.HOME}
-        component={HomeScreen}
+        name={routes.HOME_NAV}
+        component={HomeNavigator}
         options={{
-          header: (props) => <Header {...props} logout={logOut} />,
+          headerShown : false
         }}
       />
       <Tab.Screen
-        name={routes.CATEGORY}
+        name={routes.CATEGORY_NAV}
         options={{
-          header: (props) => <Header {...props} logout={logOut} />,
+          headerShown :false
         }}
-        component={CategoryScreen}
+        component={CategoryNavigation}
       />
       <Tab.Screen
         name={routes.PROFILE}
@@ -40,13 +44,12 @@ const AppNavigator = () => {
         component={ProfileScreen}
       />
       <Tab.Screen
-        name={routes.MY_EVENTS}
+        name={routes.EVENTS_NAV}
         options={{
           header: (props) => <Header {...props} logout={logOut} />,
         }}
         component={MyEventsScreen}
       />
- 
     </Tab.Navigator>
   );
 };

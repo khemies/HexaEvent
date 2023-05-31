@@ -1,16 +1,25 @@
 import React from "react";
 import { Text} from "react-native";
 import defaultSyles from '../config/styles'
-import { StyleSheet } from 'react-native'
-import { useFonts, Yellowtail_400Regular } from '@expo-google-fonts/yellowtail';
+import { StyleSheet } from "react-native";
 
 
 
 function TextTitle({ children, style,...otherProps }) {
-    let [fontsLoaded] = useFonts({
-        Yellowtail_400Regular,
-      });
-  return <Text style={[  defaultSyles.text,style , styles.textTitle,, {fontFamily: 'Yellowtail_400Regular'  } ]} {...otherProps}  >{children}</Text>;
+
+  return (
+    <Text
+      style={[
+        defaultSyles.text,
+        styles.textTitle,
+        style,
+
+      ]}
+      {...otherProps}
+    >
+      {children}
+    </Text>
+  );
 }
 
 const styles = StyleSheet.create({

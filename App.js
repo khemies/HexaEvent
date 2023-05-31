@@ -7,22 +7,41 @@ import AuthContext from "./context/AuthContext";
 import { useState, useEffect } from "react";
 import store from "./redux/store/store";
 import { Provider } from "react-redux";
+import * as Location from "expo-location";
+import LocationContext from "./context/LocationContext";
+
 
 
 export default function App() {
   const [user, setUser] = useState(null);
+  const [Position , setPosition] = useState({})
   let [fontsLoaded] = useFonts({
     NeoSansArabic: require("./assets/fonts/NeoSansArabic.ttf"),
   });
+
+    useEffect(() => {
+      (async () => {
+        Location.enableNetworkProviderAsync();
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        let { status: tstatus } =
+          await Location.requestForegroundPermissionsAsync();
+        if (status !== "granted") {
+          alert("Permission to access location was denied");
+          return;
+        }
+      })();
+    }, []);
 
   if (!fontsLoaded) {
     return <AppLoading />;
   } else
     return (
       <AuthContext.Provider value={{ user, setUser }}>
-        <Provider store={store()}>
-          <AppContainer />
-        </Provider>
+        <LocationContext.Provider value={{ Position, setPosition }}>
+          <Provider store={store()}>
+            <AppContainer />
+          </Provider>
+        </LocationContext.Provider>
       </AuthContext.Provider>
     );
 }

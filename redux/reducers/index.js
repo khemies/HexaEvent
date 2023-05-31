@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
-import Donation from "./donationReducer";
+
+import location from "./location-reducer";
 
 // Root Reducer
 const rootReducer = combineReducers({
-  Donation,
+  location,
+
 });
 
 export default rootReducer;

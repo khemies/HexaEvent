@@ -9,25 +9,20 @@ import routes from "../navigation/routes";
 function MyTabBar({ state, descriptors, navigation }) {
   const iconRender = (label) => {
     const size = adaptToHeight(0.04);
-    if (label == routes.HOME)
+    if (label == routes.HOME_NAV)
       return (
         <Ionicons name="md-home-outline" size={size} color={colors.primary} />
       );
     else if (label == routes.PROFILE)
       return <AntDesign size={size} name="user" color={colors.primary} />;
-        else if (label == routes.CATEGORY)
+    else if (label == routes.CATEGORY_NAV)
       return <Ionicons name="search" size={size} color={colors.primary} />;
-    else
-      return (
-        <Ionicons
-          name="list"
-          size={size}
-          color={colors.primary}
-        />
-      );
+    else return <Ionicons name="list" size={size} color={colors.primary} />;
   };
   return (
-    <CustomView style={{ flexDirection: "row" }}>
+    <CustomView style={{ flexDirection: "row" , backgroundColor : colors.yellowFlash , height : adaptToHeight(0.1)
+    , alignItems : "center"
+    }}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =

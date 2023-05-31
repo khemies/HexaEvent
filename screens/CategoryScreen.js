@@ -32,7 +32,7 @@ const navigate = props.navigation.navigate;
   }
 
   const handleFilterByCategory = () => {
-    navigate(routes.ALL_EVENTS , {params : {}})
+    navigate(routes.ALL_EVENTS , {data :  "" })
   }
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const navigate = props.navigation.navigate;
     <CustomView style={styles.container} >
       { 
       categories.map((el, index) => (
-        <CategoryComponent category={el} index={index} key={index}  onPress={handleFilterByCategory}/>
+        <CategoryComponent category={el} index={index} key={index}   navigate={navigate}/>
       ))}
     </CustomView>
     </CustomView>

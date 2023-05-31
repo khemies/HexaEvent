@@ -11,7 +11,7 @@ import defaultStyles from "../config/styles";
 import AppText from "./AppText";
 import colors from "../config/colors";
 import { adaptToHeight, adaptToWidth } from "../config/dimensions";
-function AppTextInput({ icon, onChange ,width = "100%", ...otherProps }) {
+function AppTextInput({ icon, onChange ,width = "100%",styleText,styleCOntainer, ...otherProps }) {
   const [selected, setSelected] = useState(false);
   return (
     <View
@@ -22,7 +22,7 @@ function AppTextInput({ icon, onChange ,width = "100%", ...otherProps }) {
           borderBottomColor: selected
             ? defaultStyles.colors.primary
             : defaultStyles.colors.greySelection,
-        },
+        },styleCOntainer
       ]}
     >
       {icon && (
@@ -39,7 +39,7 @@ function AppTextInput({ icon, onChange ,width = "100%", ...otherProps }) {
       )}
       <TextInput
         placeholderTextColor={colors.greyPlaceholder}
-        style={[defaultStyles.text, styles.text]}
+        style={[defaultStyles.text, styles.text,styleText]}
         {...otherProps}
         onTouchStart={() => setSelected(!selected)}
         onChangeText={onChange}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text,style } from 'react-native';
 import colors from '../config/colors';
 import AppText from '../components/AppText';
 import ProfileItem from '../components/ProfileItem';
@@ -58,12 +58,11 @@ const styles = StyleSheet.create({
  color:colors.primary,
  },
  answertextform :{
-
-  fontSize:15,
+ fontSize:15,
   marginTop:10,
   marginLeft:30,
   color:colors.greySelection,
-  },
+  }
 });
 
 export default CustomComponent;

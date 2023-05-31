@@ -55,18 +55,14 @@ export default function AllEventsScreen({data = [] , route,navigation,...otherPr
         <CustomView
           style={{
             backgroundColor: colors.light,
-            width: "60%",
+            width: "100%",
             alignItems: "flex-start",
             marginRight: "10%",
           }}
         >
-          <AppTextInput onChange={(values) => setSearchText(values)} />
+          <AppTextInput placeholder="search" onChange={(values) => setSearchText(values)} />
         </CustomView>
-        <AppButton
-          title="Filter"
-          style={{ width: adaptToWidth(0.3), height: adaptToHeight(0.06) }}
-          styleText={{ fontSize: 12 }}
-        />
+       
       </CustomView>
 
       <FlatList
@@ -82,7 +78,6 @@ export default function AllEventsScreen({data = [] , route,navigation,...otherPr
           return itemId ? `item_${itemId}` : Math.random().toString(); 
         }}
         renderItem={({ item }) => {
-          console.log(item.id, "item.id");
           return <ItemList item={item} key={item?.id} onPress={() => navigation?.navigate(routes.DETAIL,{data : item})}/>;
         }}
       />

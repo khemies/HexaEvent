@@ -19,6 +19,7 @@ const navigate = props.navigation.navigate;
 
   const handleGetEvents = async () =>{
    getEvents().then(res => {
+    console.log(res,  "chec server status")
     setEvents([...res?.data.results])
     setFilredEvents([...res?.data.results]);
    }).catch(e => console.log(e))

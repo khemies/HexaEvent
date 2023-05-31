@@ -8,14 +8,15 @@ import { Provider } from "react-redux";
 import store from "./redux/store/store";
 import useAuth from "./Auth/useAuth";
 import LoadingComponent from "./components/Loading"
-import useLocation from "./hooks/useLocation";
 import LocationContext from "./context/LocationContext";
+import useLocation from "./hooks/useLocation";
+import DetailScreen from "./screens/DetailScreen";
 
 const AppContainer = () => {
   const { user, setUser } = useContext(AuthContext);
   const { persistlogin , Loading} = useAuth();
-  const {LoadingLocation} = useLocation()
-  const {position , setPosition } = useContext(LocationContext)
+  const {Position , setPosition} = useContext(LocationContext)
+  const { LoadingLocation } = useLocation(setPosition);
   
  
 
@@ -24,20 +25,15 @@ const AppContainer = () => {
    }, []);
 
    if(Loading ){
-    console.log(Loading , "loading")
     return <LoadingComponent/>
    }
-   
-//    else if (LoadingLocation){
-// console.log(LoadingLocation, "LoadingLocation");
-// return <LoadingComponent />;
-//    }
    else{
   return (
-    <NavigationContainer value={{ position, setPosition }}>
-      {user ? <AppNavigator /> : <AuthNavigator />}
-    </NavigationContainer>
+      <NavigationContainer>
+        {user ? <AppNavigator /> : <AuthNavigator />}
+      </NavigationContainer>
   );
+ 
    }
 
 

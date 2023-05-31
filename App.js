@@ -8,10 +8,13 @@ import { useState, useEffect } from "react";
 import store from "./redux/store/store";
 import { Provider } from "react-redux";
 import * as Location from "expo-location";
+import LocationContext from "./context/LocationContext";
+
 
 
 export default function App() {
   const [user, setUser] = useState(null);
+  const [Position , setPosition] = useState({})
   let [fontsLoaded] = useFonts({
     NeoSansArabic: require("./assets/fonts/NeoSansArabic.ttf"),
   });
@@ -34,9 +37,11 @@ export default function App() {
   } else
     return (
       <AuthContext.Provider value={{ user, setUser }}>
-        <Provider store={store()}>
-          <AppContainer />
-        </Provider>
+        <LocationContext.Provider value={{ Position, setPosition }}>
+          <Provider store={store()}>
+            <AppContainer />
+          </Provider>
+        </LocationContext.Provider>
       </AuthContext.Provider>
     );
 }

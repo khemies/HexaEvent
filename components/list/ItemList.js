@@ -7,14 +7,14 @@ import AppText from "../AppText";
 
 
 
-const ItemList = ({ item }) => {
+const ItemList = ({ item, onPress }) => {
   const date = new Date(item?.event_actual_date);
 
   const month = date.toLocaleString("default", { month: "long" });
   const day = date.getDate();
 
   return (
-    <TouchableOpacity onPress={() => console.log("first")}>
+    <TouchableOpacity onPress={onPress}>
       <ImageBackground
         source={{
           uri: item?.image,

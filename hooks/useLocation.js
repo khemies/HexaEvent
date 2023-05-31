@@ -9,7 +9,6 @@ import LocationContext from "../context/LocationContext";
 const useLocation = () => {
   const [LoadingLocation , setLoadingLocation] = useState(false)
   const {position, setPosition } = useContext(LocationContext)
-  const dispatch = useDispatch();
   const getlocation = () => {
     Location.watchPositionAsync(
       {
@@ -21,6 +20,7 @@ const useLocation = () => {
         geocodeLoc(resLocation.coords.latitude, resLocation.coords.longitude)
           .then((resGeocode) => {
             let address = resGeocode.data.address;
+           
             //  dispatch(addNonConvertedLocation({ ...address }));
             //  console.log(address, "address");
             // dispatch(
@@ -33,7 +33,13 @@ const useLocation = () => {
             //     code_postale: address.postcode,
             //   })
             // );
-            setPosition(address)
+            setPosition({
+              address,
+              coords: {
+                lat: resLocation.coords.latitude,
+                long: resLocation.coords.longitude,
+              },
+            });
             return setLoadingLocation(false)
           })
           .catch((e) => console.log("update location failed with error ", e));

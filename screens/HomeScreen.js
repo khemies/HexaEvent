@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View , FlatList } from 'react-native'
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import CustomView from '../components/CustomView';
 import AppText from '../components/AppText';
 import LinkText from '../components/LinkText';
@@ -10,12 +10,14 @@ import colors from '../config/colors';
 import { getEvents } from '../controller/eventsApi';
 import { useSelector } from 'react-redux';
 import TextTitle from '../components/TextTitle';
-
+import LocationContext from '../context/LocationContext';
+import distance from '../utility/DistanceBetweenCoords';
 
 
 export default function HomeScreen(props) {
 const [events , setEvents] = useState([])
 const navigate = props.navigation.navigate
+const {Position , setPosition} = useContext(LocationContext)
 
 const getEventsHandler = async () => {
   getEvents().then(res => setEvents([...res.data.results]) ).catch(e => console.log(e))
@@ -36,14 +38,24 @@ if (events.length > 0 ){
         <AppText style={{ fontWeight: "700" }}>Nearby Events</AppText>
         <LinkText
           textStyle={{ color: colors.blueLink, fontWeight: "700" }}
-          onPress={() => navigate(routes.ALL_EVENTS, { data: events })}
+          onPress={() => {
+            console.log(events)
+            navigate(routes.ALL_EVENTS, { data: events })}}
         >
           {"See all > "}
         </LinkText>
       </CustomView>
 
       <FlatList
-        data={events}
+        data={events.filter((el) =>
+          distance(
+            el?.points?.lat,
+            el?.points?.long,
+            Position?.coords?.lat,
+            Position?.coords?.long,
+            "k"
+          ) < 1300
+        )}
         keyExtractor={({ item }) => {
           const itemId = item?.id;
           return itemId ? `item_${itemId}` : Math.random().toString();

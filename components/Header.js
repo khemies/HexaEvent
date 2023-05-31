@@ -10,12 +10,13 @@ import routes from "../navigation/routes";
 import { useSelector } from "react-redux";
 import LocationContext from "../context/LocationContext";
 
+
 const Header = (props) => {
   const currentScreen = props.route.name 
-  const {position , setPosition} = useContext(LocationContext)
-  // let currentPosition = useSelector(
-  //   (state) => state.location.nonConvertedLocation
-  // );
+  const {Position , setPosition} = useContext(LocationContext)
+  const address = Position.address
+
+  
   return (
     <CustomView
       style={{
@@ -31,37 +32,39 @@ const Header = (props) => {
       <CustomView
         style={{
           backgroundColor:
-            currentScreen == routes.HOME ? colors.yellowFlash : colors.white,
+            currentScreen == routes.HOME
+              ? colors.yellowFlash
+              : colors.white,
           width: "80%",
           height: adaptToHeight(0.08),
           color: colors.primary,
           flexDirection: "row",
-          alignItems: "flex-start",
+          alignItems: "center",
           justifyContent: "center",
-          justifyContent: "space-between",
+          justifyContent: "space-around",
 
           marginTop: adaptToHeight(0.025),
-          padding : adaptToWidth(0.01) ,
- 
+          padding: adaptToWidth(0.01),
         }}
       >
+   
         <AppText
           style={{
-            marginTop: adaptToHeight(0.025),
             fontSize: adaptToHeight(0.025),
             color: colors.primary,
             fontWeight: "bold",
             fontFamily: "NeoSansArabic",
           }}
         >
-          {currentScreen == routes.HOME
-            ? `${position?.city}, ${position?.residential}`
-            : routes.name}
+          {address?.city || address?.residential
+            ? currentScreen == routes.HOME
+              ? `${address?.city}, ${address?.residential}`
+              : currentScreen?.replace("_NAV", "")
+            : currentScreen?.replace("_NAV", "")}
         </AppText>
         <AntDesign
           name="logout"
           size={adaptToHeight(0.029)}
-          style={{ margin: adaptToHeight(0.018) }}
           color={colors.primary}
           onPress={() => props?.logout()}
         />

@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, ActivityIndicator } from 'react-native'
 import colors from '../config/colors'
 
 export default function Loading() {
-  console.log("executed")
     return (
         <View style={styles.container}>
             <ActivityIndicator size="small" color={colors.primary} />

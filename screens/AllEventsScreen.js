@@ -6,13 +6,13 @@ import AppButton from "../components/AppButton";
 import CustomView from "../components/CustomView";
 import colors from "../config/colors";
 import { adaptToHeight, adaptToWidth } from "../config/dimensions";
+import routes from "../navigation/routes";
 
 
 
-export default function AllEventsScreen({data = [] , route,...otherProps}) {
+export default function AllEventsScreen({data = [] , route,navigation,...otherProps}) {
   const [searchText , setSearchText] = useState("")
   const [filtredData , setFiltredData] = useState([])
-
 
 
   useEffect(() => {
@@ -84,7 +84,7 @@ export default function AllEventsScreen({data = [] , route,...otherProps}) {
         }}
         renderItem={({ item }) => {
           console.log(item.id, "item.id");
-          return <ItemList item={item} key={item?.id} />;
+          return <ItemList item={item} key={item?.id} onPress={() => navigation?.navigate(routes.DETAIL,{data : item})}/>;
         }}
       />
     </CustomView>
